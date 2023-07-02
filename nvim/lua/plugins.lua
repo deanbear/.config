@@ -18,11 +18,13 @@ return require('packer').startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
 
-  use {
+  use ({
   'nvim-tree/nvim-tree.lua',
   requires = {
     'nvim-tree/nvim-web-devicons', -- optional
-  }
-}
+  }})
+
+  use 'lewis6991/gitsigns.nvim'
+
 end)
 
