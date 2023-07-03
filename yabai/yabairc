@@ -11,13 +11,14 @@ yabai -m config mouse_follows_focus          off
 yabai -m config focus_follows_mouse          off
 yabai -m config window_origin_display        default
 yabai -m config window_placement             second_child
-yabai -m config window_topmost               on
+yabai -m config window_topmost               off
 yabai -m config window_shadow                off
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      2000.0
 yabai -m config active_window_opacity        1.0
 yabai -m config normal_window_opacity        0.85
 yabai -m config window_border                off
+yabai -m config window_border_blur           off
 yabai -m config window_border_width          2
 yabai -m config active_window_border_color   0xE0808080
 yabai -m config normal_window_border_color   0x00010101
@@ -43,5 +44,7 @@ yabai -m rule --add app="^阿里钉*" manage=off
 yabai -m rule --add app="^AliLang*" manage=off
 yabai -m rule --add app="^WarPig$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^Google Chrome$" title="^$" manage=off
+
 
 echo "yabai configuration loaded.."
