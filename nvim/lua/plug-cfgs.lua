@@ -16,3 +16,8 @@ if pcall(require, "gitsigns") then
   require('gitsigns').setup()
 end
 
+-- mason
+if pcall(require, "mason") then
+	require('mason').setup()
+end
+

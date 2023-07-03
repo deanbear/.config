@@ -15,7 +15,7 @@ vim.api.nvim_set_keymap('n', 'Y', '"+y$', { noremap = true })
 vim.api.nvim_set_keymap('x', 'Y', '"+y', { noremap = true })
 
 -- nohls
-vim.api.nvim_set_keymap('n', '<CR>', ':nohlsearch<CR>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<Leader><CR>', ':nohlsearch<CR>', {noremap = true})
 
 -- NvimTree
 vim.api.nvim_set_keymap('n', '<Leader>t', ':NvimTreeToggle<CR>', {noremap = true})

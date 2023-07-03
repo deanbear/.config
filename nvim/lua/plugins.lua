@@ -13,22 +13,30 @@ return require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
 
-  use({
+  use{
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
-  })
+  }
 
-  use ({
+  use {
   'nvim-tree/nvim-tree.lua',
   requires = {
     'nvim-tree/nvim-web-devicons', -- optional
-  }})
+  }}
 
   use 'lewis6991/gitsigns.nvim'
-  use ({
-  'nvim-telescope/telescope.nvim', tag = '0.1.2',
-  requires = { {'nvim-lua/plenary.nvim'} }
-  })
+
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.2',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  use {
+    "williamboman/mason.nvim",
+    run = ":MasonUpdate" -- :MasonUpdate updates registry contents
+  }
+
+  use 'mfussenegger/nvim-jdtls'
 
 end)
 
