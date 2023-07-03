@@ -12,5 +12,7 @@ require("nvim-tree").setup()
 vim.cmd[[colorscheme tokyonight]]
 
 -- gitsigns
-require('gitsigns').setup()
+if pcall(require, "gitsigns") then
+  require('gitsigns').setup()
+end
 
