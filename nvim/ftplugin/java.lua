@@ -89,16 +89,16 @@ local config = {
 			configuration = {
 				runtimes = {
           {
-            name = "JavaSE-18",
-            path = HOME .. "/Library/Java/JavaVirtualMachines/openjdk-18.0.1.1/Contents/Home/",
+            name = "JavaSE-17",
+            path = os.getenv "JavaSE_17",
           },
           {
             name = "JavaSE-11",
-						path = "/opt/homebrew/Cellar/openjdk@11/11.0.19/libexec/openjdk.jdk/Contents/Home/",
+            path = os.getenv "JavaSE_11",
           },
 					{
 						name = "JavaSE-1.8",
-						path = "/Library/Java/JavaVirtualMachines/jdk1.8.0_291.jdk/Contents/Home/",
+            path = os.getenv "JavaSE_1_8",
 					},
         },
 				updateBuildConfiguration = "interactive",
