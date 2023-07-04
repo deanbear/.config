@@ -40,6 +40,7 @@ yabai -m config window_gap                   00
 
 yabai -m rule --add app="^System Preferences*" manage=off
 yabai -m rule --add app="^System Settings*" manage=off
+yabai -m rule --add app="^阿里会议*" manage=off
 yabai -m rule --add app="^阿里钉*" manage=off
 yabai -m rule --add app="^AliLang*" manage=off
 yabai -m rule --add app="^WarPig$" manage=off

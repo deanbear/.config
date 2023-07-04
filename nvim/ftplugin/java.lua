@@ -1,6 +1,12 @@
+local jdtls_ok, jdtls = pcall(require, "jdtls")
+if not jdtls_ok then
+  vim.notify "JDTLS not found."
+  return
+end
+
 local JDTLS_LOCATION = vim.fn.stdpath "data" .. "/mason/packages/jdtls"
 local HOME = os.getenv "HOME"
-local WORKSPACE_PATH = HOME .. "/Works/workspace/eclipse/"
+local WORKSPACE_PATH = HOME .. "/Work/workspace/eclipse/"
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_dir = WORKSPACE_PATH .. project_name
@@ -12,7 +18,41 @@ local root_dir = require('jdtls.setup').find_root(root_markers)
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
+function nnoremap(rhs, lhs, bufopts, desc)
+  bufopts.desc = desc
+  vim.keymap.set("n", rhs, lhs, bufopts)
+end
+
+local on_attach = function(client, bufnr)
+	-- Regular Neovim LSP client keymappings
+	local bufopts = { noremap=true, silent=true, buffer=bufnr }
+	nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
+	nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
+	nnoremap('gi', vim.lsp.buf.implementation, bufopts, "Go to implementation")
+	nnoremap('K', vim.lsp.buf.hover, bufopts, "Hover text")
+	nnoremap('<C-k>', vim.lsp.buf.signature_help, bufopts, "Show signature")
+	nnoremap('<space>wa', vim.lsp.buf.add_workspace_folder, bufopts, "Add workspace folder")
+	nnoremap('<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts, "Remove workspace folder")
+	nnoremap('<space>wl', function()
+		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	end, bufopts, "List workspace folders")
+	nnoremap('<space>D', vim.lsp.buf.type_definition, bufopts, "Go to type definition")
+	nnoremap('<space>rn', vim.lsp.buf.rename, bufopts, "Rename")
+	nnoremap('<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
+	vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
+		{ noremap=true, silent=true, buffer=bufnr, desc = "Code actions" })
+	nnoremap('<space>f', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
+
+	-- Java extensions provided by jdtls
+	nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
+	nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
+	nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
+	vim.keymap.set('v', "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
+		{ noremap=true, silent=true, buffer=bufnr, desc = "Extract method" })
+end
+
 local config = {
+	on_attach = on_attach,
 	cmd = {
 		"java",
 		"-Declipse.application=org.eclipse.jdt.ls.core.id1",
@@ -26,6 +66,7 @@ local config = {
 		"java.base/java.util=ALL-UNNAMED",
 		"--add-opens",
 		"java.base/java.lang=ALL-UNNAMED",
+    "-javaagent:" .. JDTLS_LOCATION .. "/lombok.jar",
 		"-jar",
 		vim.fn.glob(JDTLS_LOCATION .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
 		"-configuration",
@@ -34,8 +75,7 @@ local config = {
 		workspace_dir,
 	},
 
-	-- on_attach = require("config.lsp").on_attach,
-	capabilities = require("config.lsp").capabilities,
+  capabilities = vim.lsp.protocol.make_client_capabilities(),
 	root_dir = root_dir,
 
 	-- Here you can configure eclipse.jdt.ls specific settings
@@ -62,39 +102,19 @@ local config = {
 				includeDecompiledSources = true,
 			},
 			format = {
-				enabled = true,
-				settings = {
-					url = vim.fn.stdpath "config" .. "/lang-servers/intellij-java-google-style.xml",
-					profile = "GoogleStyle",
-				},
+				enabled = false,
 			},
 		},
 		signatureHelp = { enabled = true },
 		completion = {
 			favoriteStaticMembers = {
-				"org.hamcrest.MatcherAssert.assertThat",
-				"org.hamcrest.Matchers.*",
-				"org.hamcrest.CoreMatchers.*",
 				"org.junit.jupiter.api.Assertions.*",
 				"java.util.Objects.requireNonNull",
 				"java.util.Objects.requireNonNullElse",
 				"org.mockito.Mockito.*",
 			},
 		},
-		contentProvider = { preferred = "fernflower" },
 		extendedClientCapabilities = extendedClientCapabilities,
-		sources = {
-			organizeImports = {
-				starThreshold = 9999,
-				staticStarThreshold = 9999,
-			},
-		},
-		codeGeneration = {
-			toString = {
-				template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-			},
-			useBlocks = true,
-		},
 	},
 
 	flags = {
