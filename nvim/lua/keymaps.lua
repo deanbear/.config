@@ -14,6 +14,11 @@ vim.api.nvim_set_keymap('x', 'p', '"_dp', { noremap = true })
 vim.api.nvim_set_keymap('n', 'Y', '"+y$', { noremap = true })
 vim.api.nvim_set_keymap('x', 'Y', '"+y', { noremap = true })
 
+--tab management
+vim.api.nvim_set_keymap('n', 'tn', ':tabnew<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'tw', ':tabclose<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'th', ':tabprev<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'tl', ':tabnext<CR>', { noremap = true })
 -- nohls
 vim.api.nvim_set_keymap('n', '<Leader><CR>', ':nohlsearch<CR>', {noremap = true})
 
@@ -28,4 +33,9 @@ local builtin = require('telescope.builtin')
   vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
   vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
   vim.keymap.set('n', '<leader>fc', builtin.command_history, {})
+	vim.keymap.set('n', '<leader>fr', builtin.lsp_references, {})
+  vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, {})
+  vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls, {})
+  vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls, {})
+  vim.keymap.set('n', '<leader>fm', builtin.lsp_implementations, {})
 end
