@@ -19,10 +19,11 @@ return require('packer').startup(function(use)
   }
 
   use {
-  'nvim-tree/nvim-tree.lua',
-  requires = {
-    'nvim-tree/nvim-web-devicons', -- optional
-  }}
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+     'nvim-tree/nvim-web-devicons', -- optional
+	  }
+	}
 
   use 'lewis6991/gitsigns.nvim'
 
@@ -37,6 +38,19 @@ return require('packer').startup(function(use)
   }
 
   use 'mfussenegger/nvim-jdtls'
+
+	use 'neovim/nvim-lspconfig'
+
+	use {
+		"hrsh7th/nvim-cmp",
+		requires = {
+			'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+			'hrsh7th/cmp-vsnip',
+			'hrsh7th/vim-vsnip',
+			'onsails/lspkind.nvim',
+	  }
+	}
 
 end)
 

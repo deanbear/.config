@@ -38,4 +38,5 @@ local builtin = require('telescope.builtin')
   vim.keymap.set('n', '<leader>fi', builtin.lsp_incoming_calls, {})
   vim.keymap.set('n', '<leader>fo', builtin.lsp_outgoing_calls, {})
   vim.keymap.set('n', '<leader>fm', builtin.lsp_implementations, {})
+  vim.keymap.set('n', '<leader>fx', builtin.diagnostics, {})
 end
