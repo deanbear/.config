@@ -1,4 +1,5 @@
 .DS_Store
 iterm2/
 nvim/plugin/
+lazy-lock.json
 jgit/

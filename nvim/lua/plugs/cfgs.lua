@@ -1,31 +1,80 @@
--- nvim-tree configs
-vim.opt.termguicolors = true
-require("nvim-tree").setup({
-  disable_netrw = false,
-  hijack_netrw = true,
-  view = {
-    adaptive_size = true,
-	  --float = {
-		-- enable = true,
-	  --},
+return {
+  {
+    'folke/tokyonight.nvim',
+    config = function()
+      -- load the colorscheme here
+      vim.cmd([[colorscheme tokyonight]])
+    end,
   },
-  actions = {
-	  open_file = {
-		  quit_on_open = true,
-	  }
-  }
+  {
+    'iamcco/markdown-preview.nvim',
+    build = function() vim.fn['mkdp#util#install']() end,
+  },
+  {
+    'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons', 
+    },
+    config = function()
+
+ vim.opt.termguicolors = true
+			require("nvim-tree").setup({
+
+				disable_netrw = false,
+				hijack_netrw = true,
+				view = {
+					adaptive_size = true,
+					--float = {
+					-- enable = true,
+					--},
+				},
+				actions = {
+					open_file = {
+					quit_on_open = true,
+					}
+				}
+			})
+		end
+  },
+	{'lewis6991/gitsigns.nvim',
+config = function() 
+	require("gitsigns").setup()
+end},
+    {
+'nvim-telescope/telescope.nvim', tag = '0.1.2',
+  dependencies = { 'nvim-lua/plenary.nvim' },
+	config = function()
+require('telescope').setup({
+defaults = {
+	path_display = {
+		shorten = {
+			len = 3, exclude = {1, -1}
+		},
+		truncate = true
+	},
+	dynamic_preview_title = true,
+},
 })
--- colorscheme
-vim.cmd[[colorscheme tokyonight]]
--- gitsigns
-if pcall(require, "gitsigns") then
-  require('gitsigns').setup()
+	end
+},
+{
+"williamboman/mason.nvim",
+build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+config = function()
+	require("mason").setup()
 end
--- mason
-if pcall(require, "mason") then
-	require('mason').setup()
-end
--- nvim-cmp
+},
+{
+'hrsh7th/nvim-cmp',
+dependencies = {
+	'hrsh7th/cmp-nvim-lsp',
+	'hrsh7th/cmp-nvim-lsp-signature-help',
+	'hrsh7th/cmp-vsnip',
+	'hrsh7th/vim-vsnip',
+	'onsails/lspkind.nvim',
+},
+config = function() 
+
 local cmp = require 'cmp'
 local lspkind = require('lspkind')
 cmp.setup {
@@ -71,9 +120,18 @@ cmp.setup {
 		})
 	}
 }
--- nvim-treesitter
-require'nvim-treesitter.configs'.setup {
-	highlight = {
+end,
+},
+'mfussenegger/nvim-jdtls',
+'neovim/nvim-lspconfig',
+{
+"nvim-treesitter/nvim-treesitter",
+build = ":TSUpdate",
+config = function () 
+	local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+highlight = {
 		enable = true,
 
 		-- Setting this to true will run `:h syntax` and tree-sitter at the same time.
@@ -85,16 +143,6 @@ require'nvim-treesitter.configs'.setup {
 	matchup = {
 		enable = true,
 	},
+}) end
 }
--- telescope
-require('telescope').setup({
-	defaults = {
-		path_display = {
-			shorten = {
-				len = 3, exclude = {1, -1}
-			},
-			truncate = true
-		},
-		dynamic_preview_title = true,
-	},
-})
+}

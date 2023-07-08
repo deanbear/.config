@@ -1,7 +1,6 @@
-require("plug-cfgs")
-require("keymaps")
+require("plugs")
+require("kmps")
 require('opts')
-require('plugins')
 require('lsp')
 
 
