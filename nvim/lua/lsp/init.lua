@@ -4,7 +4,7 @@ function Nnoremap(rhs, lhs, bufopts, desc)
 end
 
 function Global_on_attach(_, bufnr)
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	Nnoremap('gD', vim.lsp.buf.declaration, bufopts, "Go to declaration")
 	Nnoremap('gd', vim.lsp.buf.definition, bufopts, "Go to definition")
 	Nnoremap('gi', vim.lsp.buf.implementation, bufopts, "Go to implementation")
@@ -19,7 +19,7 @@ function Global_on_attach(_, bufnr)
 	Nnoremap('<space>rn', vim.lsp.buf.rename, bufopts, "Rename")
 	Nnoremap('<space>ca', vim.lsp.buf.code_action, bufopts, "Code actions")
 	vim.keymap.set('v', "<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
-		{ noremap=true, silent=true, buffer=bufnr, desc = "Code actions" })
+		{ noremap = true, silent = true, buffer = bufnr, desc = "Code actions" })
 	Nnoremap('<space>f', function() vim.lsp.buf.format { async = true } end, bufopts, "Format file")
 end
 
@@ -30,24 +30,31 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local lspconfig = require('lspconfig')
 
 lspconfig['lua_ls'].setup {
-  on_attach = Global_on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false,
-      },
-    },
-  }
+	on_attach = Global_on_attach,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = { 'vim' },
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = vim.api.nvim_get_runtime_file("", true),
+				checkThirdParty = false,
+			},
+		},
+	}
 }
 
+local null_ls = require("null-ls")
+
+null_ls.setup({
+	sources = {
+		null_ls.builtins.formatting.stylua,
+	},
+})
