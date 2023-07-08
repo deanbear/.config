@@ -151,5 +151,3 @@ jdtls.start_or_attach(config)
 --   false
 -- )
 
-vim.bo.shiftwidth = 2
-vim.bo.tabstop = 2
