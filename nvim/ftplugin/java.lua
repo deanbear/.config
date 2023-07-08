@@ -31,6 +31,9 @@ local on_attach = function(_, bufnr)
 		{ noremap=true, silent=true, buffer=bufnr, desc = "Extract method" })
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+
 local config = {
 	on_attach = on_attach,
 	cmd = {
@@ -55,7 +58,7 @@ local config = {
 		workspace_dir,
 	},
 
-  capabilities = vim.lsp.protocol.make_client_capabilities(),
+  capabilities = capabilities, 
 	root_dir = root_dir,
 
 	-- Here you can configure eclipse.jdt.ls specific settings
