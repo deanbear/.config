@@ -8,11 +8,11 @@ local JDTLS_LOCATION = vim.fn.stdpath "data" .. "/mason/packages/jdtls"
 local HOME = os.getenv "HOME"
 local WORKSPACE_PATH = HOME .. "/Work/workspace/eclipse/"
 
-local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
-local workspace_dir = WORKSPACE_PATH .. project_name
-
 local root_markers = {'gradlew', 'mvnw', '.git', "pom.xml"}
 local root_dir = require('jdtls.setup').find_root(root_markers)
+
+local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+local workspace_dir = WORKSPACE_PATH .. project_name
 
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
@@ -24,7 +24,7 @@ local on_attach = function(_, bufnr)
 
 	Global_on_attach(_, bufnr)
 	-- Java extensions provided by jdtls
-	Nnoremap("<C-o>", jdtls.organize_imports, bufopts, "Organize imports")
+	Nnoremap("<M-O>", jdtls.organize_imports, bufopts, "Organize imports")
 	Nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
 	Nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
 	vim.keymap.set('v', "<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
@@ -58,7 +58,7 @@ local config = {
 		workspace_dir,
 	},
 
-  capabilities = capabilities, 
+  capabilities = capabilities,
 	root_dir = root_dir,
 
 	-- Here you can configure eclipse.jdt.ls specific settings
@@ -68,6 +68,11 @@ local config = {
 		java = {
 			eclipse = {
 				downloadSources = true,
+			},
+			import = {
+				gradle = {
+					wrapper = true,
+				}
 			},
 			configuration = {
 				runtimes = {
