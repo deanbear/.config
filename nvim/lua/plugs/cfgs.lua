@@ -1,19 +1,21 @@
 return {
 	{
-		'folke/tokyonight.nvim',
+		"folke/tokyonight.nvim",
 		config = function()
 			-- load the colorscheme here
 			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
 	{
-		'iamcco/markdown-preview.nvim',
-		build = function() vim.fn['mkdp#util#install']() end,
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 	{
-		'nvim-tree/nvim-tree.lua',
+		"nvim-tree/nvim-tree.lua",
 		dependencies = {
-			'nvim-tree/nvim-web-devicons',
+			"nvim-tree/nvim-web-devicons",
 		},
 		config = function()
 			vim.opt.termguicolors = true
@@ -30,59 +32,60 @@ return {
 				actions = {
 					open_file = {
 						quit_on_open = true,
-					}
-				}
+					},
+				},
 			})
-		end
+		end,
 	},
 	{
-		'lewis6991/gitsigns.nvim',
+		"lewis6991/gitsigns.nvim",
 		config = function()
 			require("gitsigns").setup()
-		end
+		end,
 	},
 	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.2',
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.2",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			require('telescope').setup({
+			require("telescope").setup({
 				defaults = {
 					path_display = {
 						shorten = {
-							len = 3, exclude = { 1, -1 }
+							len = 3,
+							exclude = { 1, -1 },
 						},
-						truncate = true
+						truncate = true,
 					},
 					dynamic_preview_title = true,
 				},
 			})
-		end
+		end,
 	},
 	{
 		"williamboman/mason.nvim",
 		build = ":MasonUpdate", -- :MasonUpdate updates registry contents
 		config = function()
 			require("mason").setup()
-		end
+		end,
 	},
 	{
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
 		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-nvim-lsp-signature-help',
-			'hrsh7th/cmp-vsnip',
-			'hrsh7th/vim-vsnip',
-			'onsails/lspkind.nvim',
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
+			"hrsh7th/cmp-vsnip",
+			"hrsh7th/vim-vsnip",
+			"onsails/lspkind.nvim",
 		},
 		config = function()
-			local cmp = require 'cmp'
-			local lspkind = require('lspkind')
-			cmp.setup {
+			local cmp = require("cmp")
+			local lspkind = require("lspkind")
+			cmp.setup({
 				sources = {
-					{ name = 'nvim_lsp' },
-					{ name = 'nvim_lsp_signature_help' },
-					{ name = 'vsnip' },
+					{ name = "nvim_lsp" },
+					{ name = "nvim_lsp_signature_help" },
+					{ name = "vsnip" },
 				},
 				snippet = {
 					expand = function(args)
@@ -91,41 +94,41 @@ return {
 					end,
 				},
 				mapping = cmp.mapping.preset.insert({
-					['<C-k>'] = cmp.mapping.scroll_docs(-4),
-					['<C-j>'] = cmp.mapping.scroll_docs(4),
-					['<M-Space>'] = cmp.mapping.complete(),
-					['<CR>'] = cmp.mapping.confirm {
+					["<C-k>"] = cmp.mapping.scroll_docs(-4),
+					["<C-j>"] = cmp.mapping.scroll_docs(4),
+					["<M-Space>"] = cmp.mapping.complete(),
+					["<CR>"] = cmp.mapping.confirm({
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
-					},
-					['<Tab>'] = cmp.mapping(function(fallback)
+					}),
+					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
 						else
 							fallback()
 						end
-					end, { 'i', 's' }),
-					['<S-Tab>'] = cmp.mapping(function(fallback)
+					end, { "i", "s" }),
+					["<S-Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_prev_item()
 						else
 							fallback()
 						end
-					end, { 'i', 's' }),
+					end, { "i", "s" }),
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
-						mode = 'symbol_text', -- show only symbol annotations
+						mode = "symbol_text", -- show only symbol annotations
 						maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-						ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-					})
-				}
-			}
+						ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+					}),
+				},
+			})
 		end,
 	},
-	'mfussenegger/nvim-jdtls',
-	'neovim/nvim-lspconfig',
-	'jose-elias-alvarez/null-ls.nvim',
+	"mfussenegger/nvim-jdtls",
+	"neovim/nvim-lspconfig",
+	"jose-elias-alvarez/null-ls.nvim",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -146,6 +149,6 @@ return {
 					enable = true,
 				},
 			})
-		end
-	}
+		end,
+	},
 }
