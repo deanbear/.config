@@ -23,6 +23,7 @@ function Global_on_attach(_, bufnr)
   Nnoremap("<space>D", vim.lsp.buf.type_definition, bufopts, "Go to type definition")
   Nnoremap("<space>rn", vim.lsp.buf.rename, bufopts, "Rename")
   Nnoremap("<space>ca", vim.lsp.buf.code_action, bufopts, "Code actions")
+  Vnoremap("<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>", bufopts, "Code actions")
   vim.keymap.set(
     "v",
     "<space>ca",
@@ -30,16 +31,18 @@ function Global_on_attach(_, bufnr)
     { noremap = true, silent = true, buffer = bufnr, desc = "Code actions" }
   )
 
-  local formatOption = (vim.bo.filetype == "json") and { tabSize = 2, insertSpaces = true, async = true }
-    or { async = true }
+  local formatOptions = { async = true, formatting_options = nil }
+
+  if vim.bo.filetype == "json" then
+    formatOptions.formatting_options = { tabSize = 2, insertSpaces = true }
+  end
 
   Nnoremap("<space>f", function()
-		print("isJson?" .. vim.bo.filetype .. formatOption.tabSize)
-    vim.lsp.buf.format(formatOption)
+    vim.lsp.buf.format(formatOptions)
   end, bufopts, "Format file")
 
   Vnoremap("<space>f", function()
-    vim.lsp.buf.format(formatOption)
+    vim.lsp.buf.format(formatOptions)
   end, bufopts, "Format file")
 end
 
