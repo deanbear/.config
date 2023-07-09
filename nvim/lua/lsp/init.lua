@@ -4,8 +4,8 @@ function Nnoremap(rhs, lhs, bufopts, desc)
 end
 
 function Vnoremap(rhs, lhs, bufopts, desc)
-	bufopts.desc = desc
-	vim.keymap.set("v", rhs, lhs, bufopts)
+  bufopts.desc = desc
+  vim.keymap.set("v", rhs, lhs, bufopts)
 end
 
 function Global_on_attach(_, bufnr)
@@ -29,18 +29,30 @@ function Global_on_attach(_, bufnr)
     "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
     { noremap = true, silent = true, buffer = bufnr, desc = "Code actions" }
   )
+
+  local formatOption = (vim.bo.filetype == "json") and { tabSize = 2, insertSpaces = true, async = true }
+    or { async = true }
+
   Nnoremap("<space>f", function()
-    vim.lsp.buf.format({ async = true })
+		print("isJson?" .. vim.bo.filetype .. formatOption.tabSize)
+    vim.lsp.buf.format(formatOption)
   end, bufopts, "Format file")
+
   Vnoremap("<space>f", function()
-    vim.lsp.buf.format({ async = true })
+    vim.lsp.buf.format(formatOption)
   end, bufopts, "Format file")
 end
+
 -- add completion capability
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
+
+lspconfig["jsonls"].setup({
+  on_attach = Global_on_attach,
+  capabilities = capabilities,
+})
 
 lspconfig["lua_ls"].setup({
   on_attach = Global_on_attach,
