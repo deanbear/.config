@@ -3,6 +3,11 @@ function Nnoremap(rhs, lhs, bufopts, desc)
   vim.keymap.set("n", rhs, lhs, bufopts)
 end
 
+function Vnoremap(rhs, lhs, bufopts, desc)
+	bufopts.desc = desc
+	vim.keymap.set("v", rhs, lhs, bufopts)
+end
+
 function Global_on_attach(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
   Nnoremap("gD", vim.lsp.buf.declaration, bufopts, "Go to declaration")
@@ -27,8 +32,10 @@ function Global_on_attach(_, bufnr)
   Nnoremap("<space>f", function()
     vim.lsp.buf.format({ async = true })
   end, bufopts, "Format file")
+  Vnoremap("<space>f", function()
+    vim.lsp.buf.format({ async = true })
+  end, bufopts, "Format file")
 end
-
 -- add completion capability
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
