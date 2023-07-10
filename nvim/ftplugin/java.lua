@@ -26,13 +26,10 @@ local on_attach = function(_, bufnr)
   Nnoremap("<M-O>", jdtls.organize_imports, bufopts, "Organize imports")
   Nnoremap("<space>ev", jdtls.extract_variable, bufopts, "Extract variable")
   Nnoremap("<space>ec", jdtls.extract_constant, bufopts, "Extract constant")
-  vim.keymap.set(
-    "v",
-    "<space>em",
-    [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]],
-    { noremap = true, silent = true, buffer = bufnr, desc = "Extract method" }
-  )
+  Vnoremap("<space>em", [[<ESC><CMD>lua require('jdtls').extract_method(true)<CR>]], bufopts, "Extract method")
 end
+
+local JAVA_CMD = os.getenv("JavaSE_17") .. "/bin/java"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
@@ -40,7 +37,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local config = {
   on_attach = on_attach,
   cmd = {
-    "java",
+    JAVA_CMD,
     "-Declipse.application=org.eclipse.jdt.ls.core.id1",
     "-Dosgi.bundles.defaultStartLevel=4",
     "-Declipse.product=org.eclipse.jdt.ls.core.product",
