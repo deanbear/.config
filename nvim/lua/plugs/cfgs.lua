@@ -157,10 +157,18 @@ return {
       },
     },
   },
-	{
+  {
     "nvim-lualine/lualine.nvim",
-		config = function ()
-			require("lualine").setup({})
-		end
-	}
+    config = function()
+      require("lualine").setup({})
+    end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    version = "*",
+    dependencies = "nvim-tree/nvim-web-devicons",
+    config = function()
+      require("bufferline").setup({})
+    end,
+  },
 }
