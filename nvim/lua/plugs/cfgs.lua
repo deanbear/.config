@@ -79,6 +79,12 @@ return {
       "onsails/lspkind.nvim",
     },
   },
+  {
+    "simrat39/symbols-outline.nvim",
+    config = function()
+      require("symbols-outline").setup()
+    end,
+  },
   "mfussenegger/nvim-jdtls",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
