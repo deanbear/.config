@@ -8,7 +8,7 @@ local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
 local HOME = os.getenv("HOME")
 local WORKSPACE_PATH = HOME .. "/Work/workspace/eclipse/"
 
-local root_markers = { "gradlew", "mvnw", ".git"}
+local root_markers = { "gradlew", "mvnw", ".git" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
@@ -107,6 +107,7 @@ local config = {
         enabled = false,
       },
     },
+    contentProvider = { preferred = "fernflower" },
     signatureHelp = { enabled = true },
     completion = {
       favoriteStaticMembers = {
