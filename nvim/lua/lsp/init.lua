@@ -33,9 +33,9 @@ function Global_on_attach(_, bufnr)
 
   local formatOptions = { async = true, formatting_options = nil }
 
-  if vim.bo.filetype == "json" then
-    formatOptions.formatting_options = { tabSize = 2, insertSpaces = true }
-  end
+  -- if vim.bo.filetype == "json" then
+  --   formatOptions.formatting_options = { tabSize = 2, insertSpaces = true }
+  -- end
 
   Nnoremap("<space>f", function()
     vim.lsp.buf.format(formatOptions)
