@@ -18,6 +18,11 @@ vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "tw", ":tabclose<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "th", ":tabprev<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "tl", ":tabnext<CR>", { noremap = true })
+
+--bufferline
+vim.api.nvim_set_keymap("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<Leader>ob", ":%bd|e#|bd#<CR>", { noremap = true })
 -- nohls
 vim.api.nvim_set_keymap("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
 
