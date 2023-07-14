@@ -12,8 +12,7 @@ vim.g.noswapfile = true
 
 vim.cmd([[
 function! MyQuickfixtext(opts)
-	return luaeval('require("qckf").quickfixtext(_A)', a:opts)
+	return luaeval('require("qkfx").quickfixtext(_A)', a:opts)
 endfunction
 set quickfixtextfunc=MyQuickfixtext
 ]])
--- vim.g.quickfixtextfunc = vim.fn.luaeval('require("qckf").quickfixtext(_A)')

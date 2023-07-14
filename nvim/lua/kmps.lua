@@ -28,8 +28,8 @@ vim.keymap.set("n", "<Leader>ob", ":%bd|e#|bd#<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
 
 --quickfix
-vim.keymap.set("n", "<Leader>qf", require("qckf").toggle, { silent = true, noremap = true })
-vim.keymap.set("n", "<Leader>ql", require("qckf").load, { silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>qf", require("qkfx").toggle, { silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>ql", require("qkfx").load, { silent = true, noremap = true })
 
 -- NvimTree
 vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR>", { noremap = true })
