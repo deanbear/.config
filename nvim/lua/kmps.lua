@@ -1,33 +1,38 @@
 -- visual mode move up / down a line
-vim.api.nvim_set_keymap("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
-vim.api.nvim_set_keymap("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { noremap = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { noremap = true })
 
 -- visual mode indentation & keep cursor position
-vim.api.nvim_set_keymap("x", "<", "<gv", { noremap = true })
-vim.api.nvim_set_keymap("x", ">", ">gv", { noremap = true })
+vim.keymap.set("x", "<", "<gv", { noremap = true })
+vim.keymap.set("x", ">", ">gv", { noremap = true })
 
 -- paste
-vim.api.nvim_set_keymap("n", "P", '"+]p', { noremap = true })
-vim.api.nvim_set_keymap("x", "p", '"_dp', { noremap = true })
+vim.keymap.set("n", "P", '"+]p', { noremap = true })
+vim.keymap.set("x", "p", '"_dp', { noremap = true })
 -- copy
-vim.api.nvim_set_keymap("n", "Y", '"+y$', { noremap = true })
-vim.api.nvim_set_keymap("x", "Y", '"+y', { noremap = true })
+vim.keymap.set("n", "Y", '"+y$', { noremap = true })
+vim.keymap.set("x", "Y", '"+y', { noremap = true })
 
 --tab management
-vim.api.nvim_set_keymap("n", "tn", ":tabnew<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "tw", ":tabclose<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "th", ":tabprev<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "tl", ":tabnext<CR>", { noremap = true })
+vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true })
+vim.keymap.set("n", "tw", ":tabclose<CR>", { noremap = true })
+vim.keymap.set("n", "th", ":tabprev<CR>", { noremap = true })
+vim.keymap.set("n", "tl", ":tabnext<CR>", { noremap = true })
 
 --bufferline
-vim.api.nvim_set_keymap("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<Leader>ob", ":%bd|e#|bd#<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>ob", ":%bd|e#|bd#<CR>", { noremap = true })
+
 -- nohls
-vim.api.nvim_set_keymap("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
+
+--quickfix
+vim.keymap.set("n", "<Leader>qf", require("qckf").toggle, { silent = true, noremap = true })
+vim.keymap.set("n", "<Leader>ql", require("qckf").load, { silent = true, noremap = true })
 
 -- NvimTree
-vim.api.nvim_set_keymap("n", "<Leader>t", ":NvimTreeToggle<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- telescope
 if pcall(require, "telescope.builtin") then

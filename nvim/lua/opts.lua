@@ -4,8 +4,16 @@ vim.opt.cursorline = true
 vim.opt.autoindent = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
-vim.o.softtabstop = 2
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 vim.opt.scrolloff = 14
+vim.g.noswapfile = true
 
+vim.cmd([[
+function! MyQuickfixtext(opts)
+	return luaeval('require("qckf").quickfixtext(_A)', a:opts)
+endfunction
+set quickfixtextfunc=MyQuickfixtext
+]])
+-- vim.g.quickfixtextfunc = vim.fn.luaeval('require("qckf").quickfixtext(_A)')
