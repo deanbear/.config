@@ -15,6 +15,7 @@ return {
       --   return icon and icon .. count or ""
       -- end,
       close_command = "silent! bdelete %d",
+      show_tab_indicators = false,
 
       custom_filter = function(
         buf_number,
@@ -42,7 +43,7 @@ return {
           filetype = "NvimTree",
           text = "File Explorer",
           text_align = "center",
-          separator = false,
+          separator = true,
         },
       },
     },
