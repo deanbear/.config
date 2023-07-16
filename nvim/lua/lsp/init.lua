@@ -10,7 +10,7 @@ end
 
 function Global_on_attach(_, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
-  Nnoremap("gD", vim.lsp.buf.declaration, bufopts, "Go to declaration")
+  Nnoremap("gD", vim.lsp.buf.type_definition, bufopts, "Go to type declaration")
   Nnoremap("gd", vim.lsp.buf.definition, bufopts, "Go to definition")
   Nnoremap("gi", vim.lsp.buf.implementation, bufopts, "Go to implementation")
   Nnoremap("K", vim.lsp.buf.hover, bufopts, "Hover text")
