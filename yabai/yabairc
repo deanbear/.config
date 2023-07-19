@@ -47,6 +47,6 @@ yabai -m rule --add app="^AliLang*" manage=off
 yabai -m rule --add app="^WarPig$" manage=off
 yabai -m rule --add app="^Finder$" manage=off
 yabai -m rule --add app="^Google Chrome$" title="^$" manage=off
-
+yabai -m rule --add app="^Notes$" manage=off
 
 echo "yabai configuration loaded.."

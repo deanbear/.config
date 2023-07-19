@@ -44,16 +44,22 @@ return {
   "mfussenegger/nvim-jdtls",
   "neovim/nvim-lspconfig",
   "jose-elias-alvarez/null-ls.nvim",
-    {
+  {
     "nvim-lualine/lualine.nvim",
     config = function()
       require("lualine").setup({})
     end,
   },
-    {
+  {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup()
+    end,
+  },
+  {
+    "keaising/im-select.nvim",
+    config = function()
+      require("im_select").setup()
     end,
   },
 }
