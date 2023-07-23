@@ -39,7 +39,6 @@ function M.load()
 end
 
 function M.format_uri(uri)
-  print(uri)
   if vim.startswith(uri, "jdt://") then
     local artifact = uri:match("contents/([%a%d._-]+).jar") or ""
     local package = uri:match("contents/[%a%d._-]+/([%a%d._-]+)") or ""
