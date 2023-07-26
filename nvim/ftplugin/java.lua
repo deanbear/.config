@@ -6,13 +6,13 @@ end
 
 local JDTLS_LOCATION = vim.fn.stdpath("data") .. "/mason/packages/jdtls"
 local HOME = os.getenv("HOME")
-local WORKSPACE_PATH = HOME .. "/Work/workspace/eclipse/"
+local WORKSPACE_PATH = HOME .. "/Work/workspace/eclipse"
 
 local root_markers = { "gradlew", "mvnw", ".git" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 
 local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
-local workspace_dir = WORKSPACE_PATH .. project_name
+local workspace_dir = WORKSPACE_PATH .. "/" .. project_name
 
 local extendedClientCapabilities = jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
@@ -131,7 +131,7 @@ local config = {
   --
   -- If you don't plan on using the debugger or other eclipse.jdt.ls plugins you can remove this
   init_options = {
-    bundles = {},
+    bundles = vim.split(vim.fn.glob(WORKSPACE_PATH .. "/PDE/*.jar"), "\n"),
   },
 }
 -- This starts a new client & server,
