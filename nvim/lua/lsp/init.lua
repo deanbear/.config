@@ -79,6 +79,11 @@ lspconfig["lua_ls"].setup({
   },
 })
 
+lspconfig["lemminx"].setup({
+  on_attach = Global_on_attach,
+  capabilities = capabilities,
+})
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 cmp.setup({
