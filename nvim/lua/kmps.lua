@@ -13,12 +13,10 @@ vim.keymap.set("x", "p", '"_dp', { noremap = true })
 vim.keymap.set("n", "Y", '"+y$', { noremap = true })
 vim.keymap.set("x", "Y", '"+y', { noremap = true })
 
---tab management
-vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true })
-vim.keymap.set("n", "tw", ":tabclose<CR>", { noremap = true })
-vim.keymap.set("n", "th", ":tabprev<CR>", { noremap = true })
-vim.keymap.set("n", "tl", ":tabnext<CR>", { noremap = true })
-
+--buf management
+vim.keymap.set("n", "bn", ":bn<CR>", { noremap = true })
+vim.keymap.set("n", "bd", ":bd<CR>", { noremap = true })
+vim.keymap.set("n", "bp", ":bp<CR>", { noremap = true })
 --bufferline
 vim.keymap.set("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
