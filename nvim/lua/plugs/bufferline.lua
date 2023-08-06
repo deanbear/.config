@@ -38,9 +38,13 @@ return {
         buf_number,
         _ --[[ buf_numbers ]]
       )
-        if vim.bo[buf_number].filetype ~= "qf" then
-          return true
+        if vim.bo[buf_number].filetype == "qf" then
+          return false
+        elseif vim.startswith(vim.api.nvim_buf_get_name(buf_number), "gitsigns://") then
+          return false
         end
+
+				return true
         -- filter out filetypes you don't want to see
         -- if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
         --   return true
