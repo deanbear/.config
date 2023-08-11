@@ -1,0 +1,18 @@
+set number
+set relativenumber
+set hlsearch
+set incsearch
+set smartcase
+set ignorecase
+set showmode
+set showcmd
+set visualbell
+set surround
+
+map <Leader><CR> :nohlsearch<CR>
+map gd <Action>(GotoDeclaration)
+map gi <Action>(GotoImplementation)
+map gs <Action>(GotoSuperMethod)
+map gh <Action>(CallHierarchy)
+
+Plug 'tpope/vim-surround'
