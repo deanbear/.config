@@ -37,7 +37,7 @@ return {
   },
   "mfussenegger/nvim-jdtls",
   "neovim/nvim-lspconfig",
-  "jose-elias-alvarez/null-ls.nvim",
+  "deanbear/null-ls.nvim",
   {
     "nvim-lualine/lualine.nvim",
     config = function()
