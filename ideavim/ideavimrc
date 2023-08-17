@@ -8,7 +8,12 @@ set showmode
 set showcmd
 set visualbell
 set surround
+set keep-english-in-normal-and-restore-in-insert
 
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+map Y "+y$
+map P "+]p
 map <Leader><CR> :nohlsearch<CR>
 map gd <Action>(GotoDeclaration)
 map gi <Action>(GotoImplementation)
