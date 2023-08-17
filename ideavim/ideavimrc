@@ -9,6 +9,7 @@ set showcmd
 set visualbell
 set surround
 set keep-english-in-normal-and-restore-in-insert
+set ideajoin
 
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
