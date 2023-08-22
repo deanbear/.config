@@ -24,12 +24,7 @@ function Global_on_attach(_, bufnr)
   Nnoremap("<space>rn", vim.lsp.buf.rename, bufopts, "Rename")
   Nnoremap("<space>ca", vim.lsp.buf.code_action, bufopts, "Code actions")
   Vnoremap("<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>", bufopts, "Code actions")
-  vim.keymap.set(
-    "v",
-    "<space>ca",
-    "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>",
-    { noremap = true, silent = true, buffer = bufnr, desc = "Code actions" }
-  )
+
 
   local formatOptions = { async = true, formatting_options = nil }
 
