@@ -8,6 +8,7 @@ set showmode
 set showcmd
 set visualbell
 set surround
+set NERDTree
 set keep-english-in-normal-and-restore-in-insert
 set ideajoin
 
@@ -18,6 +19,7 @@ set ideajoin
 vnoremap K :m '<-2<CR>gv=gv
 vnoremap J :m '>+1<CR>gv=gv
 
+map <Leader>t :NERDTreeFind<CR>
 map Y "+y$
 map P "+]p
 map <Leader><CR> :nohlsearch<CR>
@@ -26,4 +28,3 @@ map gi <Action>(GotoImplementation)
 map gs <Action>(GotoSuperMethod)
 map gh <Action>(CallHierarchy)
 
-Plug 'tpope/vim-surround'
