@@ -30,7 +30,8 @@ vim.keymap.set("n", "<Leader>qf", require("qkfx").toggle, { silent = true, norem
 vim.keymap.set("n", "<Leader>ql", require("qkfx").load, { silent = true, noremap = true })
 
 -- NvimTree
-vim.keymap.set("n", "<Leader>t", ":NvimTreeToggle<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>t", ":NvimTreeFindFileToggle!<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>tt", ":NvimTreeFocus<CR>", { noremap = true })
 
 -- telescope
 if pcall(require, "telescope.builtin") then
