@@ -47,6 +47,8 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
 
+lspconfig["pyright"].setup({})
+
 lspconfig["jsonls"].setup({
   on_attach = Global_on_attach,
   capabilities = capabilities,
