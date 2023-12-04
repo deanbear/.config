@@ -14,13 +14,13 @@ vim.keymap.set("n", "Y", '"+y$', { noremap = true })
 vim.keymap.set("x", "Y", '"+y', { noremap = true })
 
 --buf management
-vim.keymap.set("n", "bn", ":bn<CR>", { noremap = true })
-vim.keymap.set("n", "bd", ":bd<CR>", { noremap = true })
-vim.keymap.set("n", "bp", ":bp<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bn", ":bn<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bd", ":bd<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bp", ":bp<CR>", { noremap = true })
 --bufferline
 vim.keymap.set("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>ob", ":%bd|e#|bd#<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>ob", ":%bd|e#|bd#<CR>:NvimTreeFindFileToggle!<CR>", { noremap = true })
 
 -- nohls
 vim.keymap.set("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
@@ -30,7 +30,7 @@ vim.keymap.set("n", "<Leader>qf", require("qkfx").toggle, { silent = true, norem
 vim.keymap.set("n", "<Leader>ql", require("qkfx").load, { silent = true, noremap = true })
 
 -- NvimTree
-vim.keymap.set("n", "<Leader>t", ":NvimTreeFindFileToggle!<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>tr", ":NvimTreeFindFileToggle!<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>tt", ":NvimTreeFocus<CR>", { noremap = true })
 
 -- telescope

@@ -25,7 +25,6 @@ function Global_on_attach(_, bufnr)
   Nnoremap("<space>ca", vim.lsp.buf.code_action, bufopts, "Code actions")
   Vnoremap("<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>", bufopts, "Code actions")
 
-
   local formatOptions = { async = true, formatting_options = nil }
 
   -- if vim.bo.filetype == "json" then
@@ -46,6 +45,25 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 local lspconfig = require("lspconfig")
+
+lspconfig["html"].setup({
+	capabilities = capabilities,
+  on_attach = Global_on_attach,
+})
+
+local HOME = os.getenv("HOME")
+
+lspconfig["volar"].setup({
+  filetypes = { "vue" },
+  init_options = {
+    typescript = {
+      tsdk = HOME .. "/node_modules/typescript/lib",
+    },
+  },
+  on_attach = Global_on_attach,
+})
+
+lspconfig["tsserver"].setup({})
 
 lspconfig["pyright"].setup({})
 
