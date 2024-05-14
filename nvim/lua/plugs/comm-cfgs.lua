@@ -64,4 +64,7 @@ return {
       require("nvim-surround").setup({})
     end,
   },
+  {
+    "famiu/bufdelete.nvim",
+  },
 }

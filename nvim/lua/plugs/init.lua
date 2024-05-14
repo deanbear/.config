@@ -11,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.opt.termguicolors = true
 
 require("lazy").setup({
   require("plugs.comm-cfgs"),
@@ -20,5 +21,5 @@ require("lazy").setup({
   require("plugs.treesitter"),
   require("plugs.bufferline"),
   require("plugs.symbols-outline"),
-	require("plugs.dashbord"),
+  require("plugs.dashbord"),
 })

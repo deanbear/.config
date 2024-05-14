@@ -15,7 +15,7 @@ vim.keymap.set("x", "Y", '"+y', { noremap = true })
 
 --buf management
 vim.keymap.set("n", "<Leader>bn", ":bn<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>bd", ":bd<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>bd", ":Bdelete<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>bp", ":bp<CR>", { noremap = true })
 --bufferline
 vim.keymap.set("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
