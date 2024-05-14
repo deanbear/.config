@@ -47,7 +47,7 @@ capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 local lspconfig = require("lspconfig")
 
 lspconfig["html"].setup({
-	capabilities = capabilities,
+  capabilities = capabilities,
   on_attach = Global_on_attach,
 })
 
@@ -61,6 +61,19 @@ lspconfig["volar"].setup({
     },
   },
   on_attach = Global_on_attach,
+})
+
+lspconfig["rust_analyzer"].setup({
+  on_attach = Global_on_attach,
+  capabilities = capabilities,
+  filetypes = { "rust" },
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+    },
+  },
 })
 
 lspconfig["tsserver"].setup({})
