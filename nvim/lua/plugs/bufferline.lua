@@ -1,6 +1,7 @@
 return {
   "akinsho/bufferline.nvim",
-  version = "*",
+  -- version = "*",
+  branch = "main",
   dependencies = "nvim-tree/nvim-web-devicons",
   opts = {
     options = {
@@ -44,7 +45,7 @@ return {
           return false
         end
 
-				return true
+        return true
         -- filter out filetypes you don't want to see
         -- if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
         --   return true
