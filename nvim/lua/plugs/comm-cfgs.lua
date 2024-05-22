@@ -3,7 +3,7 @@ return {
     "folke/tokyonight.nvim",
     config = function()
       -- load the colorscheme here
-      vim.cmd([[colorscheme tokyonight]])
+      vim.cmd([[colorscheme tokyonight-storm]])
     end,
   },
   {
