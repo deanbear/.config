@@ -2,6 +2,18 @@ return {
   {
     "folke/tokyonight.nvim",
     config = function()
+      require("tokyonight").setup({
+        style = "storm",
+        -- on_colors = function(colors)
+        --   colors.comment = "#999999"
+        -- end,
+        on_highlights = function(hl)
+          hl.DiagnosticUnnecessary = {
+            fg = "#999999",
+          }
+        end,
+      })
+
       -- load the colorscheme here
       vim.cmd([[colorscheme tokyonight-storm]])
     end,
