@@ -38,6 +38,8 @@ function Global_on_attach(_, bufnr)
   Vnoremap("<space>f", function()
     vim.lsp.buf.format(formatOptions)
   end, bufopts, "Format file")
+
+	vim.lsp.inlay_hint.enable(true, { bufnr = bufnr})
 end
 
 -- add completion capability

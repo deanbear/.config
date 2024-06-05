@@ -11,6 +11,9 @@ return {
           hl.DiagnosticUnnecessary = {
             fg = "#999999",
           }
+          hl.LspInlayHint = {
+            fg = "#9DA9A0",
+          }
         end,
       })
 
