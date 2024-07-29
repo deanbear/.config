@@ -20,7 +20,7 @@ vim.keymap.set("n", "<Leader>bp", ":bp<CR>", { noremap = true })
 --bufferline
 vim.keymap.set("n", "<Leader>pb", ":BufferLinePick<CR>", { noremap = true })
 vim.keymap.set("n", "<Leader>cb", ":BufferLinePickClose<CR>", { noremap = true })
-vim.keymap.set("n", "<Leader>ob", ":%bd|e#|bd#<CR>:NvimTreeFindFileToggle!<CR>", { noremap = true })
+vim.keymap.set("n", "<Leader>ob", ":BufferLineCloseOthers<CR>", { noremap = true })
 
 -- nohls
 vim.keymap.set("n", "<Leader><CR>", ":nohlsearch<CR>", { noremap = true })
