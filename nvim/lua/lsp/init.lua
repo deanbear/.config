@@ -79,9 +79,15 @@ lspconfig["rust_analyzer"].setup({
   },
 })
 
-lspconfig["tsserver"].setup({})
+lspconfig["tsserver"].setup({
+  on_attach = Global_on_attach,
+  capabilities = capabilities,
+})
 
-lspconfig["pyright"].setup({})
+lspconfig["pyright"].setup({
+  on_attach = Global_on_attach,
+  capabilities = capabilities,
+})
 
 lspconfig["jsonls"].setup({
   on_attach = Global_on_attach,
