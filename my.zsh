@@ -10,6 +10,9 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 export FZF_DEFAULT_OPTS='--height 60% --layout=reverse --border --info=inline'
 source <(fzf --zsh)
 
+#XDG_CONFIG
+export XDG_CONFIG_HOME=$HOME/.config
+
 
 #aliases
 alias vim='nvim'

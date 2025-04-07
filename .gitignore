@@ -6,3 +6,5 @@ jgit/
 raycast/
 com.vortex.helper/
 qBittorrent/
+tmux/*.log
+tmux/plugins
