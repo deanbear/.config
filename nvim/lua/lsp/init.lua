@@ -185,24 +185,24 @@ cmp.setup({
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.stylua.with({
-      extra_args = function(_)
-        local condition = require("null-ls.utils").make_conditional_utils
-        if condition().root_has_file({ "stylua.toml", ".stylua.toml" }) then
-          return {}
-        end
-        return { "--config-path", vim.fn.expand("~/.config/nvim/lua/lsp/stylua.toml") }
-      end,
-    }),
-    null_ls.builtins.formatting.google_java_format.with({
-      method = {
-        null_ls.methods.FORMATTING,
-        null_ls.methods.RANGE_FORMATTING,
-      },
-      extra_args = { "-aosp" },
-    }),
-  },
-})
+-- local null_ls = require("null-ls")
+-- null_ls.setup({
+--   sources = {
+--     null_ls.builtins.formatting.stylua.with({
+--       extra_args = function(_)
+--         local condition = require("null-ls.utils").make_conditional_utils
+--         if condition().root_has_file({ "stylua.toml", ".stylua.toml" }) then
+--           return {}
+--         end
+--         return { "--config-path", vim.fn.expand("~/.config/nvim/lua/lsp/stylua.toml") }
+--       end,
+--     }),
+--     null_ls.builtins.formatting.google_java_format.with({
+--       method = {
+--         null_ls.methods.FORMATTING,
+--         null_ls.methods.RANGE_FORMATTING,
+--       },
+--       extra_args = { "-aosp" },
+--     }),
+--   },
+-- })
