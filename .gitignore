@@ -1,3 +1,7 @@
+.android/
+Battle.net/
+dlv/
+github-copilot/
 .DS_Store
 iterm2/
 nvim/plugin/
