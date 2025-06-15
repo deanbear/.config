@@ -1,13 +1,20 @@
 return {
 	{
+		"gpanders/nvim-parinfer"
+	},
+	{
 		"Olical/conjure",
-		ft = { "clojure","scm" }, -- etc
+		ft = { "clojure", "scheme" }, -- etc
 		lazy = true,
 		init = function()
 			-- Set configuration options here
 			-- Uncomment this to get verbose logging to help diagnose internal Conjure issues
 			-- This is VERY helpful when reporting an issue with the project
 			-- vim.g["conjure#debug"] = true
+			-- vim.g['conjure#client#scheme#stdio#command'] = "petite"
+			-- vim.g['conjure#client#scheme#stdio#prompt_pattern'] = "> $?"
+			-- vim.g['conjure#client#scheme#stdio#prompt_pattern'] = "\n-#;%d-> "
+			-- vim.g['conjure#client#scheme#stdio#value_prefix_pattern'] = false
 		end,
 
 		-- Optional cmp-conjure integration
@@ -68,6 +75,8 @@ return {
 		"hrsh7th/nvim-cmp",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-vsnip",
 			"hrsh7th/vim-vsnip",
@@ -110,6 +119,9 @@ return {
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
 		config = true,
+		opts = {
+			disable_filetype = { "scheme" }
+		}
 		-- use opts = {} for passing setup options
 		-- this is equalent to setup({}) function
 	},
