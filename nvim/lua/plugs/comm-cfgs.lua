@@ -89,7 +89,18 @@ return {
 	{
 		"nvim-lualine/lualine.nvim",
 		config = function()
-			require("lualine").setup({})
+			require("lualine").setup({
+				sections = {
+					lualine_y = {
+						{'progress'},
+						{
+							'searchcount',
+							maxcount = 100000,
+							timeout = 500,
+						}
+					}
+				}
+			})
 		end,
 	},
 	{

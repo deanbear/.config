@@ -12,9 +12,9 @@ alias java21='export JAVA_HOME=$JAVA_21_HOME'
 alias java17='export JAVA_HOME=$JAVA_17_HOME'
 
 #rabbitPro
-export https_proxy=http://127.0.0.1:7897
-export http_proxy=http://127.0.0.1:7897
-export all_proxy=socks5://127.0.0.1:7897
+export https_proxy=http://127.0.0.1:53381
+export http_proxy=http://127.0.0.1:53381
+export all_proxy=socks5://127.0.0.1:53381
 
 #auto-suggestions
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh

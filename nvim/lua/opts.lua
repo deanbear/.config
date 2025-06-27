@@ -9,6 +9,7 @@ vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.scrolloff = 14
 vim.g.noswapfile = true
+vim.opt.shortmess:append("S")
 
 vim.cmd([[
 function! MyQuickfixtext(opts)
