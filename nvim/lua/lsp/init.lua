@@ -47,16 +47,16 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local lspconfig = require("lspconfig")
+local lsp = vim.lsp
 
-lspconfig["html"].setup({
+lsp.config('html', {
 	capabilities = capabilities,
 	on_attach = Global_on_attach,
 })
 
 local HOME = os.getenv("HOME")
 
-lspconfig["volar"].setup({
+lsp.config('volar', {
 	filetypes = { "vue" },
 	init_options = {
 		typescript = {
@@ -66,7 +66,7 @@ lspconfig["volar"].setup({
 	on_attach = Global_on_attach,
 })
 
-lspconfig["rust_analyzer"].setup({
+lsp.config('rust_analyzer', {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 	filetypes = { "rust" },
@@ -79,22 +79,22 @@ lspconfig["rust_analyzer"].setup({
 	},
 })
 
-lspconfig["ts_ls"].setup({
+lsp.config("ts_ls", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig["pyright"].setup({
+lsp.config("pyright", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig["jsonls"].setup({
+lsp.config("jsonls", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig["lua_ls"].setup({
+lsp.config("lua_ls", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 	settings = {
@@ -116,7 +116,7 @@ lspconfig["lua_ls"].setup({
 	},
 })
 
-lspconfig["lemminx"].setup({
+lsp.config("lemminx", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
