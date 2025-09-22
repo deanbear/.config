@@ -26,7 +26,7 @@ function Global_on_attach(_, bufnr)
 	Nnoremap("<space>ca", vim.lsp.buf.code_action, bufopts, "Code actions")
 	Vnoremap("<space>ca", "<ESC><CMD>lua vim.lsp.buf.range_code_action()<CR>", bufopts, "Code actions")
 
-	local formatOptions = { async = true, formatting_options = nil }
+	local formatOptions = { async = true }
 
 	-- if vim.bo.filetype == "json" then
 	--   formatOptions.formatting_options = { tabSize = 2, insertSpaces = true }
@@ -53,18 +53,9 @@ lsp.config('html', {
 	capabilities = capabilities,
 	on_attach = Global_on_attach,
 })
+lsp.enable('html')
 
 local HOME = os.getenv("HOME")
-
-lsp.config('volar', {
-	filetypes = { "vue" },
-	init_options = {
-		typescript = {
-			tsdk = HOME .. "/node_modules/typescript/lib",
-		},
-	},
-	on_attach = Global_on_attach,
-})
 
 lsp.config('rust_analyzer', {
 	on_attach = Global_on_attach,
@@ -78,21 +69,25 @@ lsp.config('rust_analyzer', {
 		},
 	},
 })
+lsp.enable('rust_analyzer')
 
 lsp.config("ts_ls", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
+lsp.enable('ts_ls')
 
 lsp.config("pyright", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
+lsp.enable('pyright')
 
 lsp.config("jsonls", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
+lsp.enable('jsonls')
 
 lsp.config("lua_ls", {
 	on_attach = Global_on_attach,
@@ -115,11 +110,13 @@ lsp.config("lua_ls", {
 		},
 	},
 })
+lsp.enable('lua_ls')
 
 lsp.config("lemminx", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
 })
+lsp.enable('lemminx')
 
 local has_words_before = function()
 	unpack = unpack or table.unpack
