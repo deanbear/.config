@@ -53,10 +53,11 @@ return {
 		end,
 	},
 	{
-		"iamcco/markdown-preview.nvim",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
+		"OXY2DEV/markview.nvim",
+		lazy = false,
+
+		-- Completion for `blink.cmp`
+		-- dependencies = { "saghen/blink.cmp" },
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -92,7 +93,7 @@ return {
 			require("lualine").setup({
 				sections = {
 					lualine_y = {
-						{'progress'},
+						{ 'progress' },
 						{
 							'searchcount',
 							maxcount = 100000,
@@ -103,12 +104,7 @@ return {
 			})
 		end,
 	},
-	{
-		"numToStr/Comment.nvim",
-		config = function()
-			require("Comment").setup()
-		end,
-	},
+	{ 'nvim-mini/mini.comment', version = false },
 	-- {
 	--   "keaising/im-select.nvim",
 	--   config = function()
