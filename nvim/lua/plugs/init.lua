@@ -20,5 +20,5 @@ require("lazy").setup({
   require("plugs.flash"),
   require("plugs.treesitter"),
   require("plugs.bufferline"),
-  require("plugs.dashbord"),
+  require("plugs.dashboard"),
 })

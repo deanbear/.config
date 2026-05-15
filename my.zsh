@@ -1,12 +1,12 @@
 export LANG=en_US.UTF-8
 #jdk
 export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v 11)
-export JAVA_17_HOME=$(/usr/libexec/java_home -v 17)
-export JAVA_21_HOME=$(/usr/libexec/java_home -v 21)
-export JAVA_23_HOME=$(/usr/libexec/java_home -v 24)
+export JAVA_11_HOME="/Library/Java/JavaVirtualMachines/openjdk-11.jdk/Contents/Home"
+export JAVA_17_HOME="/Library/Java/JavaVirtualMachines/openjdk-17.jdk/Contents/Home"
+export JAVA_21_HOME="/Library/Java/JavaVirtualMachines/openjdk-21.jdk/Contents/Home"
+export JAVA_LATEST_HOME="/Library/Java/JavaVirtualMachines/openjdk.jdk/Contents/Home"
 
-alias java24='export JAVA_HOME=$JAVA_23_HOME'
+alias jdklatest='export JAVA_HOME=$JAVA_LATEST_HOME'
 alias java11='export JAVA_HOME=$JAVA_11_HOME'
 alias java21='export JAVA_HOME=$JAVA_21_HOME'
 alias java17='export JAVA_HOME=$JAVA_17_HOME'

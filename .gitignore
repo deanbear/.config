@@ -5,6 +5,7 @@ github-copilot/
 clash/
 git/
 claude/
+.claude/
 .DS_Store
 iterm2/
 nvim/plugin/
@@ -16,3 +17,5 @@ qBittorrent/
 tmux/*.log
 tmux/plugins
 swiftpm/
+gh/
+joshuto/
