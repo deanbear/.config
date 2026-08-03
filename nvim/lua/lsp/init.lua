@@ -80,6 +80,7 @@ lsp.enable('ts_ls')
 lsp.config("pyright", {
 	on_attach = Global_on_attach,
 	capabilities = capabilities,
+	cmd = { "pyright-langserver", "--stdio" },
 })
 lsp.enable('pyright')
 
